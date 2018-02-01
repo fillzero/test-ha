@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+  <title>HA topo</title>
+  <script type='text/javascript' src='dwr/interface/HA.js'></script>
+  <script type='text/javascript' src='dwr/engine.js'></script>
+  <script type='text/javascript' src='dwr/util.js'></script>
+  <script src="js_css/jquery-1.4.2.js" type="text/javascript"></script>
+
+</head>
+<body>
+<style type='text/css'>
+
+</style>
+<script type="text/javascript">
+var config_name;
+
+$(document).ready(function() {
+    dwr.engine.setAsync(false);
+    var config = location.search.split('config=')[1];
+    show_topo_config(config);
+});
+
+function show_topo_config(config) {
+    //    HA.listConfigs(list_topo_config_callback);
+    config_name = config;
+    HA.genLoadTopoConfigPic(config, load_topo_callback);
+    HA.getMaxFailureTolerance(config, getMaxFailureTolerance_callback);
+    HA.genTopoResultPic(config, get_result_callback);
+    HA.genProtectSeriesCompareResultPic(config, genProtectSeriesCompareResultPic_callback);
+    HA.getExhaustive_result(config, getExhaustive_result_callback);
+}
+
+function list_topo_config_callback(listArray) {
+    //alert(listArray);
+    var len = listArray.length;
+    var html = "";
+    for(i = 0; i < len; i++) {
+	html += "<input type='button' value='" + listArray[i] + "' onclick='process_topo(\"" + listArray[i] + "\")' /><br>";
+    }	
+    document.getElementById("topo_list").innerHTML = html;
+
+    //document.getElementById("note").value = cb_str;
+}
+
+function process_topo(config) {
+    clean_pic();
+    HA.genLoadTopoConfigPic(config, load_topo_callback);
+    HA.genTopoResultPic(config, get_result_callback);
+}
+function clean_pic() {
+    document.getElementById("pic_topo_cfg").innerHTML = "";
+    document.getElementById("pic_topo_result").innerHTML = "";
+}
+function load_topo_callback(pic_path) {
+    // alert(pic_path)
+    var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("pic_topo_cfg").innerHTML = r;
+}
+function getMaxFailureTolerance_callback(result) {
+    // alert(result);
+    document.getElementById("max_fail_tolerance").innerHTML = result;
+}
+function get_result_callback(pic_path) {
+    // alert(pic_path)
+    var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("pic_topo_result").innerHTML = r;
+}
+function genProtectSeriesCompareResultPic_callback(pic_path) {
+	// alert(pic_path);
+    var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("pic_compare").innerHTML = r;	
+}
+function getExhaustive_result_callback(result) {
+    // alert(result);
+    document.getElementById("exhaustive_result").innerHTML = result;
+    if(result.indexOf("pass") !== -1) {
+		HA.getExhaustive_cnt(config_name, getExhaustive_cnt_callback);
+	}
+}
+function getExhaustive_cnt_callback(cnt) {
+	var div = document.getElementById('exhaustive_list');
+	div.style.display = 'block';
+	$('#combination_cnt_1').html(cnt);
+	$('#combination_cnt_2').html(cnt);
+}
+function get_result_of_combination_by_index() {
+	//alert(config_name +  " " +  parseInt(document.getElementById("input_case_index").value));
+	HA.getCombinationResultPic(config_name, parseInt(document.getElementById("input_case_index").value), get_result_of_combination_by_index_callback);
+}
+function get_result_of_combination_by_index_callback(pic_path) {
+	//alert(pic_path);
+	var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("combination_result_pic").innerHTML = r;
+}
+</script>
+<!--
+<input type="button" value='write' onclick="write_cb()" />
+
+<input type="text" size="4" value=""  id="pageIndex" />
+<br><br>
+-->
+
+<div>
+<b>Description about the items on below pictures</b><br>
+<img src="pic_note.png">
+</div>
+<div id="topo_list"></div>
+<br><hr><br>
+<b>Topology when enabling HA:</b>
+<div id="pic_topo_cfg"></div>
+<br>
+
+<br><hr><br>
+<b>Algorithm result:</b><br>
+Max failure tolerance: <span id="max_fail_tolerance"></span><br>
+<div id="pic_topo_result"></div>
+
+<br>
+<br><hr><br>
+<b>Algorithm output compare:</b><br>
+<div id="pic_compare"></div>
+<br>
+
+<br><hr><br>
+<b>Exhaustive results</b>: <span id = "exhaustive_result"></span><br><br>
+
+<div id="exhaustive_list" style = "display:none">
+Total <span id="combination_cnt_1"></span> combination cases, input 1 ~ <span id="combination_cnt_2"></span> and get result<br><br>
+
+<input type="text" size="4" value=""  id="input_case_index" /> &nbsp;&nbsp;&nbsp;&nbsp;
+<input type='button' value='Get result' onclick='get_result_of_combination_by_index()' />
+</div>
+<div id="combination_result_pic"></div>
+</body>
+</html>

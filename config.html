@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+  <title>Topology configure</title>
+  <script type='text/javascript' src='dwr/interface/HA.js'></script>
+  <script type='text/javascript' src='dwr/engine.js'></script>
+  <script type='text/javascript' src='dwr/util.js'></script>
+  <script src="js_css/jquery-1.4.2.js" type="text/javascript"></script>
+
+</head>
+<body>
+<style type='text/css'>
+
+</style>
+<script type="text/javascript">
+
+$(document).ready(function()
+{
+  dwr.engine.setAsync(false);
+  //list_topo_config();
+
+});
+
+function list_topo_config() {
+  HA.listConfigs(list_topo_config_callback);
+}
+
+function list_topo_config_callback(listArray) {
+  //alert(listArray);
+  var len = listArray.length;
+  var html = "";
+  for(i = 0; i < len; i++) {
+	 html += "<input type='button' value='" + listArray[i] + "' onclick='process_topo(\"" + listArray[i] + "\")' /><br>";
+
+  }	
+  document.getElementById("topo_list").innerHTML = html;
+
+  //document.getElementById("note").value = cb_str;
+}
+
+function process_topo(config) {
+	clean_pic();
+	HA.genLoadTopoConfigPic(config, load_topo_callback);
+	HA.genTopoResultPic(config, get_result_callback);
+}
+function clean_pic() {
+	document.getElementById("pic_topo_cfg").innerHTML = "";
+	document.getElementById("pic_topo_result").innerHTML = "";
+}
+function load_topo_callback(pic_path) {
+	// alert(pic_path)
+	var r= '<img src="' + pic_path + '"/>';
+	document.getElementById("pic_topo_cfg").innerHTML = r;
+}	
+function get_result_callback(pic_path) {
+	// alert(pic_path)
+	var r= '<img src="' + pic_path + '"/>';
+	document.getElementById("pic_topo_result").innerHTML = r;
+}
+function write_cb() {
+  // alert("write");
+  // alert(document.getElementById("note").value);
+  CB.write_cb(document.getElementById("note").value);
+}
+
+function next_config_vm_mem() {
+	var div = document.getElementById('config_vm_mem');
+	div.style.display = 'block';
+}
+</script>
+<!--
+<input type="button" value='write' onclick="write_cb()" />
+
+<input type="text" size="4" value=""  id="pageIndex" />
+<br><br>
+-->
+
+<!--
+<textarea rows="20" cols="120" id="note"></textarea>
+-->
+<span> Config topology </span><br><br>
+<div id="topo_list"></div>
+
+<div id="pic_topo_cfg"></div>
+<div id="pic_topo_result"></div>
+<br>
+Total Host number: <input type="text" size="4" value=""  id="total_host_num" /><br><br>
+Total VM number: <input type="text" size="4" value=""  id="total_vm_num" /><br><br>
+<input type='button' value='Next' onclick='next_config_vm_mem()' />
+
+<div id="config_vm_mem" style = "display:none">
+VM memory range <br>
+Min: <input type="text" size="4" value=""  id="vm_mem_min" /><br>
+Max: <input type="text" size="4" value=""  id="vm_mem_max" /><br><br>
+
+<input type='button' value='Next' onclick='next_config_host_mem()' />
+</div>
+
+<br>
+
+<div id="config_host_mem" style = "display:none">
+Host memory range <br>
+Min: <input type="text" size="4" value=""  id="host_mem_min" /><br>
+Max: <input type="text" size="4" value=""  id="host_mem_max" /><br>
+<br>
+Host memory usage <br>
+<input checked="true" type="radio" name="radiobutton" value="rb_balance">balance</input>
+<input checked="false" type="radio" name="radiobutton" value="rb_random">random</input>
+</div>
+</body>
+</html>

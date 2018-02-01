@@ -1,0 +1,295 @@
+## Host
+host01	4651
+host02	4651
+host03	4651
+host04	4651
+host05	4651
+host06	4651
+host07	4651
+host08	4651
+host09	4651
+host10	4651
+host11	4651
+host12	4651
+host13	4651
+host14	4651
+host15	4651
+host16	4651
+host17	4651
+host18	4651
+host19	4651
+host20	4651
+host21	4651
+host22	4651
+host23	4651
+host24	4651
+host25	4651
+host26	4651
+host27	4651
+host28	4651
+host29	4651
+host30	4651
+host31	4651
+host32	4651
+## Host end
+
+## VM
+host01_VM_01	512	host01
+host01_VM_02	512	host01
+host01_VM_03	512	host01
+host01_VM_04	512	host01
+host02_VM_01	512	host02
+host02_VM_02	512	host02
+host02_VM_03	512	host02
+host02_VM_04	512	host02
+host03_VM_01	512	host03
+host03_VM_02	512	host03
+host03_VM_03	512	host03
+host03_VM_04	512	host03
+host04_VM_01	512	host04
+host04_VM_02	512	host04
+host04_VM_03	512	host04
+host04_VM_04	512	host04
+host05_VM_01	512	host05
+host05_VM_02	512	host05
+host05_VM_03	512	host05
+host05_VM_04	512	host05
+host06_VM_01	512	host06
+host06_VM_02	512	host06
+host06_VM_03	512	host06
+host06_VM_04	512	host06
+host07_VM_01	512	host07
+host07_VM_02	512	host07
+host07_VM_03	512	host07
+host07_VM_04	512	host07
+host08_VM_01	512	host08
+host08_VM_02	512	host08
+host08_VM_03	512	host08
+host08_VM_04	512	host08
+host09_VM_01	512	host09
+host09_VM_02	512	host09
+host09_VM_03	512	host09
+host09_VM_04	512	host09
+host10_VM_01	512	host10
+host10_VM_02	512	host10
+host10_VM_03	512	host10
+host10_VM_04	512	host10
+host11_VM_01	512	host11
+host11_VM_02	512	host11
+host11_VM_03	512	host11
+host11_VM_04	512	host11
+host12_VM_01	512	host12
+host12_VM_02	512	host12
+host12_VM_03	512	host12
+host12_VM_04	512	host12
+host13_VM_01	512	host13
+host13_VM_02	512	host13
+host13_VM_03	512	host13
+host13_VM_04	512	host13
+host14_VM_01	512	host14
+host14_VM_02	512	host14
+host14_VM_03	512	host14
+host14_VM_04	512	host14
+host15_VM_01	512	host15
+host15_VM_02	512	host15
+host15_VM_03	512	host15
+host15_VM_04	512	host15
+host16_VM_01	512	host16
+host16_VM_02	512	host16
+host16_VM_03	512	host16
+host16_VM_04	512	host16
+host17_VM_01	512	host17
+host17_VM_02	512	host17
+host17_VM_03	512	host17
+host17_VM_04	512	host17
+host18_VM_01	512	host18
+host18_VM_02	512	host18
+host18_VM_03	512	host18
+host18_VM_04	512	host18
+host19_VM_01	512	host19
+host19_VM_02	512	host19
+host19_VM_03	512	host19
+host19_VM_04	512	host19
+host20_VM_01	512	host20
+host20_VM_02	512	host20
+host20_VM_03	512	host20
+host20_VM_04	512	host20
+host21_VM_01	512	host21
+host21_VM_02	512	host21
+host21_VM_03	512	host21
+host21_VM_04	512	host21
+host22_VM_01	512	host22
+host22_VM_02	512	host22
+host22_VM_03	512	host22
+host22_VM_04	512	host22
+host23_VM_01	512	host23
+host23_VM_02	512	host23
+host23_VM_03	512	host23
+host23_VM_04	512	host23
+host24_VM_01	512	host24
+host24_VM_02	512	host24
+host24_VM_03	512	host24
+host24_VM_04	512	host24
+host25_VM_01	512	host25
+host25_VM_02	512	host25
+host25_VM_03	512	host25
+host25_VM_04	512	host25
+host26_VM_01	512	host26
+host26_VM_02	512	host26
+host26_VM_03	512	host26
+host26_VM_04	512	host26
+host27_VM_01	512	host27
+host27_VM_02	512	host27
+host27_VM_03	512	host27
+host27_VM_04	512	host27
+host28_VM_01	512	host28
+host28_VM_02	512	host28
+host28_VM_03	512	host28
+host28_VM_04	512	host28
+host29_VM_01	512	host29
+host29_VM_02	512	host29
+host29_VM_03	512	host29
+host29_VM_04	512	host29
+host30_VM_01	512	host30
+host30_VM_02	512	host30
+host30_VM_03	512	host30
+host30_VM_04	512	host30
+host31_VM_01	512	host31
+host31_VM_02	512	host31
+host31_VM_03	512	host31
+host31_VM_04	512	host31
+host32_VM_01	512	host32
+host32_VM_02	512	host32
+host32_VM_03	512	host32
+host32_VM_04	512	host32
+## VM end
+## protect order
+host31_VM_02
+host18_VM_01
+host19_VM_01
+host25_VM_01
+host20_VM_02
+host30_VM_03
+host25_VM_04
+host10_VM_01
+host01_VM_04
+host26_VM_01
+host21_VM_03
+host27_VM_01
+host26_VM_04
+host05_VM_04
+host21_VM_02
+host12_VM_01
+host04_VM_02
+host32_VM_02
+host23_VM_03
+host05_VM_01
+host14_VM_04
+host01_VM_02
+host26_VM_02
+host25_VM_02
+host12_VM_03
+host22_VM_03
+host18_VM_04
+host17_VM_03
+host31_VM_04
+host16_VM_02
+host30_VM_02
+host29_VM_03
+host28_VM_01
+host04_VM_04
+host11_VM_01
+host15_VM_01
+host09_VM_01
+host24_VM_02
+host17_VM_01
+host11_VM_04
+host30_VM_01
+host05_VM_02
+host02_VM_03
+host14_VM_02
+host13_VM_01
+host23_VM_02
+host10_VM_03
+host08_VM_03
+host15_VM_02
+host02_VM_02
+host19_VM_04
+host06_VM_01
+host02_VM_01
+host03_VM_02
+host04_VM_03
+host22_VM_04
+host07_VM_03
+host19_VM_02
+host02_VM_04
+host32_VM_03
+host32_VM_04
+host15_VM_03
+host23_VM_04
+host24_VM_01
+host10_VM_02
+host03_VM_01
+host04_VM_01
+host20_VM_04
+host14_VM_01
+host05_VM_03
+host27_VM_02
+host11_VM_03
+host06_VM_04
+host09_VM_04
+host28_VM_02
+host01_VM_03
+host03_VM_04
+host27_VM_04
+host12_VM_02
+host28_VM_03
+host13_VM_04
+host30_VM_04
+host20_VM_03
+host08_VM_04
+host19_VM_03
+host16_VM_04
+host24_VM_03
+host20_VM_01
+host28_VM_04
+host10_VM_04
+host31_VM_01
+host13_VM_02
+host17_VM_04
+host22_VM_02
+host09_VM_03
+host31_VM_03
+host03_VM_03
+host14_VM_03
+host12_VM_04
+host24_VM_04
+host18_VM_02
+host11_VM_02
+host16_VM_01
+host22_VM_01
+host06_VM_03
+host29_VM_01
+host21_VM_04
+host29_VM_02
+host01_VM_01
+host08_VM_02
+host06_VM_02
+host23_VM_01
+host32_VM_01
+host08_VM_01
+host07_VM_04
+host26_VM_03
+host17_VM_02
+host15_VM_04
+host13_VM_03
+host07_VM_02
+host27_VM_03
+host07_VM_01
+host21_VM_01
+host09_VM_02
+host18_VM_03
+host25_VM_03
+host16_VM_03
+host29_VM_04
+## protect end

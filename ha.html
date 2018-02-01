@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+  <title>HA</title>
+  <script type='text/javascript' src='dwr/interface/HA.js'></script>
+  <script type='text/javascript' src='dwr/engine.js'></script>
+  <script type='text/javascript' src='dwr/util.js'></script>
+  <script src="js_css/jquery-1.4.2.js" type="text/javascript"></script>
+
+</head>
+<body>
+<style type='text/css'>
+
+</style>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    dwr.engine.setAsync(false);
+    list_topo_config();
+});
+
+function list_topo_config() {
+    HA.listConfigs(list_topo_config_callback);
+}
+
+function list_topo_config_callback(listArray) {
+    //alert(listArray);
+    var len = listArray.length;
+    var html = "";
+    for(i = 0; i < len; i++) {
+	html += "<input type='button' value='" + listArray[i] + "' onclick='open_topo(\"" + listArray[i] + "\")' /><br>";
+    }	
+    document.getElementById("topo_list").innerHTML = html;
+
+    //document.getElementById("note").value = cb_str;
+}
+
+function open_topo(config) {
+    clean_pic();
+    // HA.genLoadTopoConfigPic(config, load_topo_callback);
+    // HA.genTopoResultPic(config, get_result_callback);
+    var url = "ha_topo.html?config=" + config;
+    // alert(url);
+    var win = window.open(url, '_blank');
+    win.focus();	
+}
+function clean_pic() {
+    document.getElementById("pic_topo_cfg").innerHTML = "";
+    document.getElementById("pic_topo_result").innerHTML = "";
+}
+function load_topo_callback(pic_path) {
+    // alert(pic_path)
+    var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("pic_topo_cfg").innerHTML = r;
+}	
+function get_result_callback(pic_path) {
+    // alert(pic_path)
+    var r= '<img src="' + pic_path + '"/>';
+    document.getElementById("pic_topo_result").innerHTML = r;
+}
+function write_cb() {
+    // alert("write");
+    // alert(document.getElementById("note").value);
+    CB.write_cb(document.getElementById("note").value);
+}
+
+</script>
+<!--
+<input type="button" value='write' onclick="write_cb()" />
+
+<input type="text" size="4" value=""  id="pageIndex" />
+<br><br>
+-->
+
+<span> Existing topology </span><br><br>
+<div id="topo_list"></div>
+
+<div id="pic_topo_cfg"></div>
+<div id="pic_topo_result"></div>
+</body>
+</html>
